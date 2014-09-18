@@ -1,0 +1,36 @@
+1)
+setwd("~/Documents/Bios301/Bios301/datasets") #load appropriate working directory
+cancer = read.csv("cancer.csv") #load cancer.csv into Global Enviorment
+cancer.df <- data.frame(cancer) #convert into dataframe
+
+2)
+rsum <- nrow(cancer.df) #count number of rows, 42120
+csum <- ncol(cancer.df) # count number of columns, 8
+#alternatively
+dim(cancer.df)
+
+3)
+> cnames <- colnames(cancer.df)
+> cnames
+[1] "year"       "site"       "state"      "sex"       
+[5] "race"       "mortality"  "incidence"  "population"
+
+4)
+Q4<- cancer.df[300,6] #42.27
+
+5)
+Q5 <- cancer.df[172,] # 1999	Brain and Other Nervous System	nevada	Male	Black	0	0	73172
+
+6)
+cancinc<-cancer.df$incidence # extract incidence
+pop<-cancer.df$population    # extract population
+per<- integer(pop/10000)   # make population per 10000 individuals
+cancrate<-cancinc/per    #calculate rate per 10000
+> cancer2.df<-cbind(cancer.df, list(rate=cancrate)) # Add rate column, while renaming cancer.df to differntiate old and new data frame
+
+7)
+> sum(cancer2.df$rate ==0)
+[1] 23191
+
+8)
+
