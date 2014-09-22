@@ -145,34 +145,30 @@ Ztrans<-function(x,n){
 ```
 
 2. If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Write an R program to perform the following calculations. (5 points)
-**Note that the output of this function is a logical value, but answers the question.**
 ```{r}
 diviscounter<-function(x,y,z) {
-    k=seq(1:x)
-    subK<-(k%%y|z==0)
-    summary(subK)[3]
-  }
+  w=0 
+  k=seq(1:(x-1))
+   for (i in k) {
+      if (i%%y==0) {
+        w=i+w
+      } else {  
+      if (i%%z==0) {
+        w=i+w
+        }    
+        }    
+          }
+      print(w)
+      }
 ```
 
     a. Find the sum of all the multiples of 3 or 5 below 1,000. (3, [euler1])
-**Note that the output of this function is a logical value, but answers the question.**
-```{r}
-k=seq(1:1000)
-subK<-(k%%3|5==0)
-summary(subK)[3]
-```
-*Alternatively, using my function:*
+*Using my function:*
 ```{r}
 diviscounter(1e3,3,5)
 ```
     b. Find the sum of all the multiples of 4 or 7 below 1,000,000. (2)
-**Note that the output of this function is a logical value, but answers the question.**
-```{r}
-m=seq(1:1e6)
-subM<-(m%%4|7==0)
-summary(subM)[3]
-```
-*Alternatively, using my function:*
+*Using my function:*
 ```{r}
 diviscounter(1e6,4,7)
 ```
